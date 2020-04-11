@@ -64,12 +64,12 @@ export class SalesAnalisisComponent implements OnInit {
   }
 
   createSalesChart() {
-    this.titleChart = 'Vendas realizadas';
+    this.titleChart = 'Ganhos em vendas';
     this.createLineChart();
   }
 
   createProductSalesChart() {
-    this.titleChart = 'Produtos vendidos';
+    this.titleChart = 'Ganhos com produtos';
     this.createLineChart();
   }
 
@@ -128,7 +128,7 @@ export class SalesAnalisisComponent implements OnInit {
       data: {
         labels: this.getDates(),
         datasets: [{
-          label: '# de vendas',
+          label: '# ganhos em vendas',
           data: this.generateDaysValues(),
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
@@ -160,8 +160,12 @@ export class SalesAnalisisComponent implements OnInit {
             display: true
           }],
           yAxes: [{
-            display: true
-          }],
+            ticks: {
+              callback: function(value, index, values) {
+                return 'R$ ' + value;
+              }
+            }
+          }]
         }
       }
     });
@@ -176,8 +180,6 @@ export class SalesAnalisisComponent implements OnInit {
   }
 
   private datediff(first, second) {
-    // Take the difference between the dates and divide by milliseconds per day.
-    // Round to nearest whole number to deal with DST.
     return Math.round((second - first) / (1000 * 60 * 60 * 24));
   }
 

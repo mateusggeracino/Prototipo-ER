@@ -2,9 +2,9 @@
     <h1>Análise de vendas</h1>
     
     <div>
-        <button mat-raised-button (click)="changeToChart('salesChart')" style="margin-right:10px;">Vendas realizadas</button>
+        <button mat-raised-button (click)="changeToChart('salesChart')" style="margin-right:10px;">Ganhos em vendas</button>
 
-        <button mat-raised-button [matMenuTriggerFor]="aboveMenu" style="margin-right:10px;">Produtos vendidos</button>
+        <button mat-raised-button [matMenuTriggerFor]="aboveMenu" style="margin-right:10px;">Ganhos com produtos</button>
         <mat-menu #aboveMenu="matMenu" yPosition="below">
             <button mat-menu-item (click)="changeToChart('productChart')">Produto 1</button>
             <button mat-menu-item>Produto 2</button>
