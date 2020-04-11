@@ -2,13 +2,16 @@
     <h1>Análise de vendas</h1>
     
     <div>
-        <button mat-raised-button (click)="changeToChart('salesChart')" style="margin-right:3px;">Vendas realizadas</button>
+        <button mat-raised-button (click)="changeToChart('salesChart')" style="margin-right:10px;">Vendas realizadas</button>
 
-        <button mat-raised-button [matMenuTriggerFor]="aboveMenu">Produtos vendidos</button>
+        <button mat-raised-button [matMenuTriggerFor]="aboveMenu" style="margin-right:10px;">Produtos vendidos</button>
         <mat-menu #aboveMenu="matMenu" yPosition="below">
             <button mat-menu-item (click)="changeToChart('productChart')">Produto 1</button>
             <button mat-menu-item>Produto 2</button>
         </mat-menu>
+
+        <button mat-raised-button (click)="changeToChart('mostSoldProducts')" style="margin-right:10px;">Produtos mais vendidos</button>
+        <button mat-raised-button (click)="changeToChart('lessSoldProducts')">Produtos menos vendidos</button>
     </div>
 
     <hr/>
@@ -21,7 +24,7 @@
         </div>
       </mat-card-header>
       <mat-card-content>
-          <mat-form-field>
+          <mat-form-field *ngIf="showDatePicker">
             <input matInput
                     placeholder="Escolha um período"
                     [satDatepicker]="picker2"

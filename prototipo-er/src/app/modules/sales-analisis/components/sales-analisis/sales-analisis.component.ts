@@ -11,6 +11,7 @@ export class SalesAnalisisComponent implements OnInit {
   chart: Chart;
   titleChart: string;
   amountDays: number;
+  showDatePicker: boolean;
   private chartSelected: string;
   private fromDate: Date;
   private toDate: Date;
@@ -38,10 +39,28 @@ export class SalesAnalisisComponent implements OnInit {
     }
 
     if (this.chartSelected === 'salesChart') {
+      this.showDatePicker = true;
       this.createSalesChart();
     } else if (this.chartSelected === 'productChart') {
+      this.showDatePicker = true;
       this.createProductSalesChart();
+    } else if (this.chartSelected === 'mostSoldProducts') {
+      this.showDatePicker = false;
+      this.createMostSoldProducts();
+    } else if (this.chartSelected === 'lessSoldProducts') {
+      this.showDatePicker = false;
+      this.createLessSoldProducts();
     }
+  }
+
+  createMostSoldProducts() {
+    this.titleChart = 'Produtos mais vendidos';
+    this.createBarChart();
+  }
+
+  createLessSoldProducts() {
+    this.titleChart = 'Produtos menos vendidos';
+    this.createBarChart();
   }
 
   createSalesChart() {
@@ -59,15 +78,21 @@ export class SalesAnalisisComponent implements OnInit {
     this.chart = new Chart('canvas', {
       type: 'bar',
       data: {
-        labels: this.getDates(),
+        labels: ['Product 8', 'Product 9',  'Product 10', 'Product 11',  'Product 12',  'Product 13', 'Product 14'],
         datasets: [{
-          label: '# de vendas',
+          label: '# de vendas do produto',
           data,
           backgroundColor: [
-            'rgba(255, 99, 132, 0.2)'
+            'rgba(255, 99, 132, 0.2)',
+            'rgba(55, 99, 122, 0.2)',
+            'rgba(25, 19, 132, 0.2)',
+            'rgba(140, 19, 32, 0.2)',
+            'rgba(140, 240, 32, 0.5)',
+            'rgba(140, 240, 140, 0.2)',
+            'rgba(50, 50, 50, 0.2)'
           ],
           borderColor: [
-            'rgba(255, 99, 132, 1)'
+            
           ],
           borderWidth: 1
         }]
