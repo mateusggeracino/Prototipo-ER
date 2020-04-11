@@ -1,0 +1,7 @@
+<div class="title">
+  <h2>Promoções Ativas</h2>
+  <hr />
+</div>
+<div fxLayout="row wrap" fxLayoutAlign="space-between">
+  <app-product-sale *ngFor="let product of products" [product]="product"></app-product-sale>
+</div>

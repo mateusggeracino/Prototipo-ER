@@ -1,0 +1,24 @@
+<div class="card-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{product.title}}</mat-card-title>
+      <mat-card-subtitle>{{product.title}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="product.imgUrl" alt="...">
+    <mat-card-content>
+      <p>
+        {{product.description}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="prices" fxLayout="column">
+        <span fxLayout="row">Preço Original: {{product.price | currency:'BRL':true:'1.2-2'}}</span>
+        <span fxLayout="row">Preço com Desconto: {{product.priceOff | currency:'BRL':true:'1.2-2'}}</span>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <button mat-button>Compartilhar</button>
+        <button mat-button>Visualizar</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

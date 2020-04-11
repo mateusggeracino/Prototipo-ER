@@ -1,0 +1,48 @@
+<div>
+  <div fxLayout="column" class="container-filtro">
+    <div fxLayout="row" fxLayoutGap="24px">
+      <mat-form-field appearance="outline">
+        <mat-label>State</mat-label>
+        <mat-select>
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>State</mat-label>
+        <mat-select>
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>State</mat-label>
+        <mat-select>
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>State</mat-label>
+        <mat-select>
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let state of states" [value]="state">{{state}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div fxLayout="row">
+      <mat-form-field appearance="outline">
+        <mat-label>Qual produto você está procurando?</mat-label>
+        <input matInput placeholder="Placeholder">
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div fxLayout="row wrap" fxLayoutAlign="space-between">
+    <app-product-card *ngFor="let product of products" [product]="product"></app-product-card>
+  </div>
+</div>

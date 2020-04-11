@@ -1,16 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SidebarComponent } from './sidebar/sidebar.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { MatIconModule, MatToolbarModule, MatListModule, MatButtonModule } from '@angular/material';
-import { ToolbarComponent } from './toolbar/toolbar.component';
+import { MatIconModule, MatToolbarModule, MatListModule, MatButtonModule, MatCardModule } from '@angular/material';
 import { MenuComponent } from './menu/menu.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    SidebarComponent,
-    ToolbarComponent,
     MenuComponent,
   ],
   imports: [
@@ -20,11 +17,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatToolbarModule,
     MatListModule,
     MatButtonModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    RouterModule,
+    MatCardModule,
   ],
   exports: [
-    SidebarComponent,
-    ToolbarComponent,
     MenuComponent,
   ]
 })

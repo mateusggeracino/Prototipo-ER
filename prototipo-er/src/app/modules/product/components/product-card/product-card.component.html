@@ -1,0 +1,18 @@
+<div class="card-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{product.title}}</mat-card-title>
+      <mat-card-subtitle>{{product.title}}</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image [src]="product.imgUrl" alt="...">
+    <mat-card-content>
+      <p>
+        {{product.description}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="8px">
+      <button mat-button>Compartilhar</button>
+      <button mat-button>Visualizar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,10 +1,10 @@
-<mat-toolbar color="primary">
+<mat-toolbar class="azul-6mkt">
   <mat-toolbar-row>
-    <div>
+    <div fxFlex fxLayout="row">
       <button (click)="drawer.toggle()" mat-icon-button>
         <mat-icon>dehaze</mat-icon>
       </button>
-      <div>
+      <div fxFlex fxLayoutAlign="center center">
         <span>6mkt</span>
       </div>
     </div>
@@ -12,13 +12,25 @@
 </mat-toolbar>
 
 
-<mat-drawer-container autosize>
-  <mat-drawer #drawer class="example-sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
-    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button>
+<mat-drawer-container>
+  <mat-drawer #drawer class="example-sidenav" mode="side" fxFlex>
+    <div class="picture-user" fxLayout="column" fxLayoutAlign="center center">
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <img src="http://www.ccrnigeria.org/admin/img/user/user1.svg">
+      </div>
+      <div fxLayout="row">
+        <span>Olá Joaquim</span>
+      </div>
+    </div>
+    <div>
+      <div class="container-menu" fxLayout="column" fxLayoutGap="20px" *ngFor="let menu of menus">
+        <div class="menu-item" fxLayoutAlign="start center" fxLayout="row" fxLayoutGap="10px" [routerLink]="menu.url" routerLinkActive="routerLinkActive">
+          <span class="icon-menu mdi" [ngClass]="menu.icon"></span>
+          <span>{{menu.name}}</span>
+        </div>
+      </div>
+    </div>
+
   </mat-drawer>
 
 </mat-drawer-container>
