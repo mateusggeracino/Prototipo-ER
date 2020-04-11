@@ -1,1 +1,28 @@
-<p>my-products works!</p>
+<mat-dialog-content class="mat-typography">
+  <div class="title">
+    <h2>Meus Produtos</h2>
+    <hr />
+  </div>
+  <div fxLayout="row wrap" fxLayoutGap="24px" fxLayoutAlign="center center">
+    <div *ngFor="let product of products" class="card-container">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{product.title}}</mat-card-title>
+          <mat-card-subtitle>{{product.title}}</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image [src]="product.imgUrl" alt="...">
+        <mat-card-content>
+          <p>
+            {{product.description}}
+          </p>
+        </mat-card-content>
+        <mat-card-actions fxLayout="row" fxLayoutAlign="center center">
+          <button mat-button (click)="select(product)">Selecionar</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions fxLayoutAlign="end center">
+  <button mat-button mat-dialog-close class="button-close">Fechar</button>
+</mat-dialog-actions>

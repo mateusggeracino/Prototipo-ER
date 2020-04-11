@@ -1,5 +1,5 @@
 .card-container {
-  width: 250px;
+  max-width: 250px;
   min-height: 80px;
   margin-bottom: 24px;
 }
@@ -12,4 +12,8 @@
 
 img{
   height: 250px;
+}
+
+.actions-competitors{
+  padding-bottom: 38px;
 }

@@ -18,8 +18,9 @@
         <mat-card-subtitle>{{productCompetitor.title}}</mat-card-subtitle>
       </mat-card-header>
       <img mat-card-image [src]="productCompetitor.imgUrl" alt="...">
-      <mat-card-actions fxLayoutAlign="center center">
+      <mat-card-actions  fxLayoutAlign="center center">
         <span>{{productCompetitor.priceOff | currency:'BRL':true:'1.2-2'}}</span>
+        <span class="actions-competitors"></span>
       </mat-card-actions>
     </mat-card>
   </div>

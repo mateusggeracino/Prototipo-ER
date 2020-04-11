@@ -19,7 +19,8 @@ export class ViewProductComponent implements OnInit {
 
   dialogMyProducts() {
     const dialogRef = this.dialog.open(MyProductsComponent, {
-      width: '250px'
+      width: '60%',
+      height: '80%'
     });
 
     dialogRef.afterClosed().subscribe(result => {
