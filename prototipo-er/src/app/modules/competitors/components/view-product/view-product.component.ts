@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Product } from 'src/app/shared/product/product';
+import { Product, ProductSales } from 'src/app/shared/product/product';
 import { MatDialog } from '@angular/material';
 import { MyProductsComponent } from '../modals/my-products/my-products.component';
 
@@ -11,7 +11,7 @@ import { MyProductsComponent } from '../modals/my-products/my-products.component
 export class ViewProductComponent implements OnInit {
 
   @Input() product: Product;
-  @Input() productCompetitor: Product;
+  @Input() productCompetitor: ProductSales;
   constructor(public dialog: MatDialog) { }
 
   ngOnInit() {

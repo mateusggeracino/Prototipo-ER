@@ -7,7 +7,7 @@ import { Chart, ChartDataSets } from 'chart.js';
   styleUrls: ['./sales-analisis.component.scss']
 })
 export class SalesAnalisisComponent implements OnInit {
-  
+
   chart: Chart;
   titleChart: string;
   amountDays: number;
@@ -22,39 +22,39 @@ export class SalesAnalisisComponent implements OnInit {
     this.toDate = new Date();
     this.fromDate = this.removeDate(this.toDate, this.amountDays);
   }
-  
+
   ngOnInit() {
     this.changeChart();
   }
 
-  private changeToChart(chart: string) {
+  changeToChart(chart: string) {
     this.chartSelected = chart;
     this.changeChart();
   }
-  
-  private changeChart() {
+
+  changeChart() {
     if (this.chart) {
       this.chart.destroy();
     }
 
-    if (this.chartSelected == 'salesChart') {
+    if (this.chartSelected === 'salesChart') {
       this.createSalesChart();
-    } else if (this.chartSelected == 'productChart') {
+    } else if (this.chartSelected === 'productChart') {
       this.createProductSalesChart();
     }
   }
 
-  private createSalesChart() {
+  createSalesChart() {
     this.titleChart = 'Vendas realizadas';
     this.createLineChart();
   }
 
-  private createProductSalesChart() {
+  createProductSalesChart() {
     this.titleChart = 'Produtos vendidos';
     this.createLineChart();
   }
 
-  private createBarChart() {
+  createBarChart() {
     const data = this.generateDaysValues();
     this.chart = new Chart('canvas', {
       type: 'bar',
@@ -69,18 +69,18 @@ export class SalesAnalisisComponent implements OnInit {
           borderColor: [
             'rgba(255, 99, 132, 1)'
           ],
-            borderWidth: 1
-          }]
+          borderWidth: 1
+        }]
       },
       options: {
-          scales: {
-              xAxes: [{
-                  stacked: true
-              }],
-              yAxes: [{
-                  stacked: true
-              }]
-          }
+        scales: {
+          xAxes: [{
+            stacked: true
+          }],
+          yAxes: [{
+            stacked: true
+          }]
+        }
       }
     });
   }
@@ -89,8 +89,8 @@ export class SalesAnalisisComponent implements OnInit {
     const values = [];
 
     console.log('generateDaysValues', this.amountDays);
-    
-    for (let i = 0; i < this.amountDays+1; i++) {
+
+    for (let i = 0; i < this.amountDays + 1; i++) {
       values[i] = this.getRandomInt(0, 100);
     }
 
@@ -142,7 +142,7 @@ export class SalesAnalisisComponent implements OnInit {
     });
   }
 
-  private saveDate($event) {
+  saveDate($event: any) {
     const value = $event.value;
     this.amountDays = this.datediff(value.begin, value.end);
     this.fromDate = value.begin;
@@ -153,7 +153,7 @@ export class SalesAnalisisComponent implements OnInit {
   private datediff(first, second) {
     // Take the difference between the dates and divide by milliseconds per day.
     // Round to nearest whole number to deal with DST.
-    return Math.round((second-first)/(1000*60*60*24));
+    return Math.round((second - first) / (1000 * 60 * 60 * 24));
   }
 
   private getRandomInt(min, max): number {
@@ -166,14 +166,14 @@ export class SalesAnalisisComponent implements OnInit {
     const dateArray: Date[] = new Array<Date>();
     let currentDate = this.toDate;
     while (currentDate >= this.fromDate) {
-      dateArray.push(currentDate)
+      dateArray.push(currentDate);
       currentDate = this.removeDate(currentDate, 1);
     }
 
     console.log(dateArray);
 
     const strDateArray = [];
-    for (let i = dateArray.length -1; i >= 0; i--) {
+    for (let i = dateArray.length - 1; i >= 0; i--) {
       const month = dateArray[i].getMonth() + 1;
       const day = (dateArray[i].getDate()) < 10 ? `0${dateArray[i].getDate()}` : dateArray[i].getDate();
 
@@ -186,9 +186,8 @@ export class SalesAnalisisComponent implements OnInit {
   }
 
   private removeDate(date: Date, days: number) {
-    var from = new Date(date.valueOf())
+    const from = new Date(date.valueOf());
     from.setDate(from.getDate() - days);
     return from;
   }
-
 }
