@@ -16,7 +16,7 @@
         <span fxLayout="row">Preço com Desconto: {{product.priceOff | currency:'BRL':true:'1.2-2'}}</span>
       </div>
       <div fxLayout="row" fxLayoutAlign="center center">
-        <button mat-button>Compartilhar</button>
+        <button mat-button (click)="cancelOff()">Encerrar</button>
         <button mat-button>Visualizar</button>
       </div>
     </mat-card-actions>

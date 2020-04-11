@@ -1,0 +1,83 @@
+<div fxLayout="column">
+  <div fxFlex="100" fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="24px">
+    <div fxFlex="50" fxLayout="column">
+      <mat-form-field appearance="outline">
+        <mat-label>Produto</mat-label>
+        <mat-select>
+          <mat-option>Nenhum</mat-option>
+          <mat-option (onSelectionChange)='selectProduct(product)' *ngFor="let product of products" [value]="product">
+            {{product.title}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+
+  <div fxFlex="100" fxLayoutAlign="center" *ngIf="product" fxLayout="row">
+    <div fxFlex="30" class="mt-22" fxLayout="column">
+      <div class="card-container">
+        <mat-card>
+          <mat-card-header>
+            <mat-card-title>{{product.title}}</mat-card-title>
+            <mat-card-subtitle>{{product.title}}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image [src]="product.imgUrl" alt="...">
+          <mat-card-content>
+            <p>
+              {{product.description}}
+            </p>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+    <div fxFlex="30" fxLayout="column">
+      <div class="competitor border">
+        <div class="mb-10">
+          <mat-label>Seus concorrentes cobram a média: {{ getTenPercent(product.price) | currency:'BRL':true:'1.2-2'}}
+          </mat-label>
+        </div>
+        <div class="mb-10">
+          <mat-label>Seus concorrentes vendem em média {{randomNumber}} unidades/mês</mat-label>
+        </div>
+        <div class="mb-10">
+          <mat-label>Hoje {{randomNumber}} concorrentes estão com esse produto em desconto</mat-label>
+        </div>
+      </div>
+      <hr />
+      <div class="provider border">
+        <div class="mb-10">
+          <mat-label>Preço atual do seu produto: {{product.price | currency:'BRL':true:'1.2-2'}}</mat-label>
+        </div>
+
+
+        <div>
+          <div class="mb-10">
+            <mat-label>Recomendação de preço: {{getTenPercent(product.price-4) | currency:'BRL':true:'1.2-2'}}
+            </mat-label>
+          </div>
+        </div>
+
+        <div>
+          <mat-form-field>
+            <input matInput placeholder="Escolha um período" [satDatepicker]="picker2" (dateChange)="saveDate($event)">
+            <sat-datepicker #picker2 [rangeMode]="true">
+            </sat-datepicker>
+            <sat-datepicker-toggle matSuffix [for]="picker2"></sat-datepicker-toggle>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Novo preço do seu produto</mat-label>
+            <input matInput>
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="product" fxLayout="row" class="mt-22" fxLayoutAlign="center center">
+    <button (click)="removeProduct()" mat-fab color="primary">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+</div>

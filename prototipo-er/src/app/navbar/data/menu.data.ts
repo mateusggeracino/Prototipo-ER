@@ -14,9 +14,9 @@ export function getMenu() {
       icon: 'mdi-account-tie-voice-outline',
       url: '',
       menus: [
-        { name: 'Promoções Ativas', icon: 'mdi-account-tie-voice-outline', url: 'promocoes/' },
-        { name: 'Recomendações', icon: 'mdi-account-tie-voice-outline', url: 'promocoes/', },
-        { name: 'Adicionar Promoção', icon: 'mdi-account-tie-voice-outline', url: 'promocoes/', }
+        { name: 'Promoções Ativas', icon: 'mdi-checkbox-multiple-blank-circle-outline', url: 'promocoes/' },
+        { name: 'Recomendações', icon: 'mdi-finance', url: 'promocoes/recomendacoes', },
+        { name: 'Adicionar Promoção', icon: 'mdi-label-outline', url: 'promocoes/adicionar-promocao', }
       ]
     },
     { name: 'Analise Vendas', icon: 'mdi-book-search-outline', url: '/analise-vendas/' },

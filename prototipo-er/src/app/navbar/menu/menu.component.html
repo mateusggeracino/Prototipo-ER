@@ -24,7 +24,7 @@
     </div>
     <div>
       <div class="container-menu" fxLayout="column" *ngFor="let menu of menus">
-        <div class="menu-item" (click)="toggleMenu(menu)"
+        <div class="menu-item" (click)="toggleMenu(menu, false)"
           [ngClass]="{'routerLinkActive': menu.ativo}" fxLayoutAlign="start center" fxLayoutGap="10px" >
           <span class="icon-menu mdi" [ngClass]="menu.icon"></span>
           <span>{{menu.name}}</span>

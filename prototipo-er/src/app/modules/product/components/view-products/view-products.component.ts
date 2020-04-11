@@ -14,6 +14,9 @@ export class ViewProductsComponent implements OnInit {
 
   ngOnInit() {
     this.products = getProducts();
+    this.states = [
+      'Mais Vendidos', 'Menos Vendidos', 'Maior Quantidade', 'Mais Buscado'
+    ];
   }
 
 }

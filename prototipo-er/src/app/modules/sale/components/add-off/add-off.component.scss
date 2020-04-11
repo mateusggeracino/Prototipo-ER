@@ -1,0 +1,31 @@
+.card-container {
+  width: 250px;
+  min-height: 80px;
+  margin-bottom: 24px;
+}
+
+:host ::ng-deep .mat-card-actions .mat-button,
+.mat-card-actions .mat-raised-button,
+.mat-card-actions .mat-stroked-button {
+  margin: 0;
+}
+
+img {
+  height: 250px;
+}
+
+.mb-10{
+  margin-bottom: 20px;
+}
+
+
+.mt-22{
+  margin-top: 22px
+}
+
+
+.border{
+  // border: 1px solid gray;
+  padding: 10px;
+  // border-radius: 10px;
+}
