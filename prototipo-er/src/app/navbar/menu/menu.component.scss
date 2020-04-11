@@ -40,7 +40,19 @@ li {
   margin-bottom: 2px;
 }
 
+.submenu-item{
+  margin-left: 20px;
+  cursor: pointer;
+  padding: 10px 27px;
+  margin-bottom: 2px;
+}
+
 .menu-item:hover {
+  background-color: #dedede;
+  color: #628cc1;
+}
+
+.submenu-item:hover {
   background-color: #dedede;
   color: #628cc1;
 }

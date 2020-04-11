@@ -23,10 +23,18 @@
       </div>
     </div>
     <div>
-      <div class="container-menu" fxLayout="column" fxLayoutGap="20px" *ngFor="let menu of menus">
-        <div class="menu-item" fxLayoutAlign="start center" fxLayout="row" fxLayoutGap="10px" [routerLink]="menu.url" routerLinkActive="routerLinkActive">
+      <div class="container-menu" fxLayout="column" *ngFor="let menu of menus">
+        <div class="menu-item" fxLayoutAlign="start center" fxLayoutGap="10px" (click)="toggleMenu(menu)"
+          routerLinkActive="routerLinkActive">
           <span class="icon-menu mdi" [ngClass]="menu.icon"></span>
           <span>{{menu.name}}</span>
+        </div>
+        <div *ngIf="menu.menus" fxLayout="column">
+          <div class="submenu-item" fxLayoutAlign="start center" fxLayout="row" fxLayoutGap="10px"  *ngFor="let subMenu of menu.menus"
+            (click)="toggleMenu(subMenu)">
+            <span class="icon-menu mdi" [ngClass]="subMenu.icon"></span>
+            <span>{{subMenu.name}}</span>
+          </div>
         </div>
       </div>
     </div>
