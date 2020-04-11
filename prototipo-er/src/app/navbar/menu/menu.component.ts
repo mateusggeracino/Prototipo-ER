@@ -16,8 +16,6 @@ export class MenuComponent implements OnInit {
   }
 
   toggleMenu(menu: Menu, subMenu: boolean) {
-    debugger
-
     if (subMenu) {
       this.router.navigate([`/${menu.url}`]);
       return;
