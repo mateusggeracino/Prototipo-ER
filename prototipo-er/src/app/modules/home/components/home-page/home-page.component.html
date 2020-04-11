@@ -1,25 +1,87 @@
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
-<p>home-page works!</p>
+<div>
+    <h1>Olá Joaquim, bem-vindo</h1>
+
+    <div gdGap="20px" gdColumns="repeat(2, [col] 50%)" gdRows="repeat(2, [row] auto)">
+        <div class="box" gdColumn="col 1 / span 1" gdRow="row">
+            <div gdGap="20px" gdColumns="repeat(2, [col] 50%)" gdRows="repeat(2, [row] auto)">
+                <div class="box" gdColumn="col 1 / span 1" gdRow="row">
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title>Com vendas: R$ 400,00</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <canvas id="chart-sales"></canvas>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+    
+                <div class="box" gdColumn="col 2 / span 1" gdRow="row">
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title>Com produtos: R$ 100,00</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <canvas id="chart-product-sales"></canvas>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+    
+                <div class="box" gdColumn="col / span 1" gdRow="row 2">
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title>Produtos mais vendidos</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <canvas id="chart-products-most-sold"></canvas>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+    
+                <div class="box" gdColumn="col 2 / span 1" gdRow="row 2">
+                    <mat-card>
+                        <mat-card-header>
+                            <mat-card-title>Produtos em estoque</mat-card-title>
+                        </mat-card-header>
+                        <mat-card-content>
+                            <canvas id="chart-stock-products"></canvas>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+        </div>
+
+        <div class="box" gdColumn="col 2 / span 1" gdRow="row">
+            <mat-card class="example-card" style="margin-left:10px;">
+                <mat-card-header>
+                    <mat-card-title>Últimas vendas</mat-card-title>
+                </mat-card-header>
+                <mat-card-content>
+                    <mat-list role="list" class="margin-bottom: 14px;">
+                        <mat-list-item role="listitem">
+                            <div mat-line>3 x Product 1</div>
+                            <div mat-line>11/04/2020</div>
+                        </mat-list-item>
+
+                        <mat-list-item role="listitem">
+                            <div mat-line>3 x Product 1</div>
+                            <div mat-line>11/04/2020</div>
+                        </mat-list-item>
+
+                        <mat-list-item role="listitem">
+                            <div mat-line>3 x Product 1</div>
+                            <div mat-line>11/04/2020</div>
+                        </mat-list-item>
+
+                        <mat-list-item role="listitem">
+                            <div mat-line>3 x Product 1</div>
+                            <div mat-line>11/04/2020</div>
+                        </mat-list-item>
+                    </mat-list>
+
+                    <button mat-raised-button color="primary">Ver mais</button>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+
+</div>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Chart, ChartDataSets } from 'chart.js';
+import { Chart } from 'chart.js';
 
 @Component({
   selector: 'app-sales-analisis',
