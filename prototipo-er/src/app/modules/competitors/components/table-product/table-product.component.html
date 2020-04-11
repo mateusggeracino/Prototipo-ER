@@ -1,0 +1,27 @@
+<div>
+  <div>
+    <mat-form-field class="example-full-width">
+      <mat-label>Qual produto você está buscando?</mat-label>
+      <input matInput [(ngModel)]="inputText" (keyup)="filter()">
+      <mat-icon  class="cursor-point" matSuffix (click)="clearFilter()">close</mat-icon>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-table [dataSource]="productCompetitors" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="competitor">
+        <mat-header-cell *matHeaderCellDef> Concorrente </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="product">
+        <mat-header-cell *matHeaderCellDef> Nome Produto </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.title}} </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row class="cursor-point line" [ngClass]="{'item-selected': selectedRowIndex == row.id}" *matRowDef="let row; columns: displayedColumns;"
+        (click)="productCompetitorSelect(row)"></mat-row>
+    </mat-table>
+  </div>
+</div>

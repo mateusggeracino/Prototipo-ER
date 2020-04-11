@@ -1,0 +1,26 @@
+<div fxLayout="row" fxLayoutAlign="center space-evenly" fxLayoutGap="10%">
+  <div fxLayout="column" class="card-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Meu Produto</mat-card-title>
+        <mat-card-subtitle>{{product.title}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="product.imgUrl" alt="...">
+      <mat-card-actions fxLayoutAlign="center center">
+        <button mat-button (click)="dialogMyProducts()">Selecionar</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  <div fxLayout="column" class="card-container">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Produto Concorrente</mat-card-title>
+        <mat-card-subtitle>{{productCompetitor.title}}</mat-card-subtitle>
+      </mat-card-header>
+      <img mat-card-image [src]="productCompetitor.imgUrl" alt="...">
+      <mat-card-actions fxLayoutAlign="center center">
+        <span>{{productCompetitor.priceOff | currency:'BRL':true:'1.2-2'}}</span>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

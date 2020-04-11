@@ -1,1 +1,8 @@
-<p>competitors works!</p>
+<div fxLayout="column">
+  <div>
+    <app-view-product [product]="myProducts[0]" [productCompetitor]="productCompetitor"></app-view-product>
+  </div>
+  <div fxLayoutAlign="center center" class="mt-24">
+    <app-table-product fxFlex="70" (productSelected)="productCompetitorSelect($event)"></app-table-product>
+  </div>
+</div>
