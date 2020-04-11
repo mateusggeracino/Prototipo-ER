@@ -24,14 +24,14 @@
     </div>
     <div>
       <div class="container-menu" fxLayout="column" *ngFor="let menu of menus">
-        <div class="menu-item" fxLayoutAlign="start center" fxLayoutGap="10px" (click)="toggleMenu(menu)"
-          routerLinkActive="routerLinkActive">
+        <div class="menu-item" (click)="toggleMenu(menu)"
+          [ngClass]="{'routerLinkActive': menu.ativo}" fxLayoutAlign="start center" fxLayoutGap="10px" >
           <span class="icon-menu mdi" [ngClass]="menu.icon"></span>
           <span>{{menu.name}}</span>
         </div>
-        <div *ngIf="menu.menus" fxLayout="column">
-          <div class="submenu-item" fxLayoutAlign="start center" fxLayout="row" fxLayoutGap="10px"  *ngFor="let subMenu of menu.menus"
-            (click)="toggleMenu(subMenu)">
+        <div *ngIf="menu.ativo" fxLayout="column">
+          <div class="submenu-item" fxLayoutAlign="start center" fxLayout="row" fxLayoutGap="10px"
+            *ngFor="let subMenu of menu.menus" (click)="toggleMenu(subMenu, true)">
             <span class="icon-menu mdi" [ngClass]="subMenu.icon"></span>
             <span>{{subMenu.name}}</span>
           </div>

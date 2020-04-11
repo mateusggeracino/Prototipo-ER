@@ -15,9 +15,25 @@ export class MenuComponent implements OnInit {
     this.menus = getMenu();
   }
 
-  toggleMenu(menu: Menu) {
+  toggleMenu(menu: Menu, subMenu: boolean) {
+    debugger
+
+    if (subMenu) {
+      this.router.navigate([`/${menu.url}`]);
+      return;
+    }
+
     if (!menu.menus) {
       this.router.navigate([`/${menu.url}`]);
+      this.menus.forEach(x => x.ativo = false);
+      menu.ativo = true;
+      return;
     }
+
+    if (menu.menus) {
+      this.menus.forEach(x => x.ativo = false);
+    }
+
+    menu.ativo = !menu.ativo;
   }
 }

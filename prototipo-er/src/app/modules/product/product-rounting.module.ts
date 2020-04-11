@@ -6,10 +6,12 @@ const routes = [
   {
     path: '',
     component: ViewProductsComponent,
-  },
-  {
-    path: 'listar',
-    component: ViewProductsComponent,
+    children: [
+      {
+        path: 'listar',
+        component: ViewProductsComponent,
+      },
+    ]
   },
 ];
 

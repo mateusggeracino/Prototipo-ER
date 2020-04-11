@@ -5,11 +5,13 @@ import { CompetitorsComponent } from './components/competitors/competitors.compo
 const routes = [
   {
     path: '',
-    component: CompetitorsComponent
-  },
-  {
-    path: 'concorrentes',
-    component: CompetitorsComponent
+    component: CompetitorsComponent,
+    children: [
+      {
+        path: 'listar',
+        component: CompetitorsComponent
+      }
+    ]
   }
 ];
 
