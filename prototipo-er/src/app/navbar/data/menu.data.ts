@@ -1,5 +1,6 @@
 export function getMenu() {
   return [
+    { name: 'Início', icon: 'mdi-home-outline', url: '/' },
     {
       name: 'Produtos',
       icon: 'mdi-layers-triple-outline',

@@ -65,12 +65,12 @@ export class SalesAnalisisComponent implements OnInit {
 
   createSalesChart() {
     this.titleChart = 'Ganhos em vendas';
-    this.createLineChart();
+    this.createLineChart([100, 2, 35, 40, 55, 60, 10, 250]);
   }
 
   createProductSalesChart() {
     this.titleChart = 'Ganhos com produtos';
-    this.createLineChart();
+    this.createLineChart([10, 25, 350, 400, 55, 60, 10, 45]);
   }
 
   createBarChart() {
@@ -122,14 +122,14 @@ export class SalesAnalisisComponent implements OnInit {
     return values;
   }
 
-  private createLineChart() {
+  private createLineChart(data: number[]) {
     this.chart = new Chart('canvas', {
       type: 'line',
       data: {
         labels: this.getDates(),
         datasets: [{
           label: '# ganhos em vendas',
-          data: this.generateDaysValues(),
+          data,
           backgroundColor: [
             'rgba(255, 99, 132, 0.2)',
             'rgba(255, 99, 132, 0.2)',
