@@ -9,11 +9,16 @@ import { getProductsSales } from '../../data/products-sales.data';
 })
 export class RecomendationComponent implements OnInit {
   products: ProductSales[];
-
+  removeButton = 'Incluir';
   constructor() { }
 
   ngOnInit() {
     this.products = getProductsSales();
   }
 
+  removeProduct(product: ProductSales) {
+    const index = this.products.findIndex(x => x.id === product.id);
+
+    this.products.splice(index, 1);
+  }
 }

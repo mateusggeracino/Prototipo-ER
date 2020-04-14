@@ -4,11 +4,11 @@ export function getMenu() {
     {
       name: 'Produtos',
       icon: 'mdi-layers-triple-outline',
-      url: '',
-      menus: [
-        { name: 'Listagem Produtos', icon: 'mdi-layers-triple-outline', url: 'produtos/listar/' },
-        { name: 'Recomendações', icon: 'mdi-layers-triple-outline', url: 'listar/', }
-      ]
+      url: 'produtos/listar/',
+      // menus: [
+      //   { name: 'Listagem Produtos', icon: 'mdi-layers-triple-outline', url: 'produtos/listar/' },
+      //   { name: 'Recomendações', icon: 'mdi-layers-triple-outline', url: 'listar/', }
+      // ]
     },
     {
       name: 'Promoções',

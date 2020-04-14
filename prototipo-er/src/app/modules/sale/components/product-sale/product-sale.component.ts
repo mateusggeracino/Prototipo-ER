@@ -8,6 +8,7 @@ import { ProductSales } from 'src/app/shared/product/product';
 })
 export class ProductSaleComponent implements OnInit {
   @Input() product: ProductSales;
+  @Input() removeButton = 'Encerrar';
   @Output() cancel = new EventEmitter();
 
   constructor() { }

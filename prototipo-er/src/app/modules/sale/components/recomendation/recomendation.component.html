@@ -3,5 +3,5 @@
   <hr />
 </div>
 <div fxLayout="row wrap" fxLayoutAlign="space-between">
-  <app-product-sale *ngFor="let product of products" [product]="product" (cancel)="removeProduct($event)"></app-product-sale>
+  <app-product-sale *ngFor="let product of products" [product]="product" (cancel)="removeProduct($event)" [removeButton]="removeButton"></app-product-sale>
 </div>
