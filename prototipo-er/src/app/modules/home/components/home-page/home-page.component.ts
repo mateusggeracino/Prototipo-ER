@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
+import { Product } from 'src/app/shared/product/product';
+import { getProducts } from '../../../product/data/products.data';
 
 @Component({
   selector: 'app-home-page',
@@ -8,15 +10,42 @@ import { Chart } from 'chart.js';
 })
 export class HomePageComponent implements OnInit {
 
+  products: Product[];
   amountDays: number = 5;
 
-  constructor() { }
+  constructor() {
+    this.products = getProducts();
+  }
 
   ngOnInit() {
     this.createLineChart(['07/04', '08/04', '09/04', '10/04', '11/04'], 'chart-sales', 'line', [100, 2, 35, 40, 55, 60, 10, 250]);
     this.createLineChart(['07/04', '08/04', '09/04', '10/04', '11/04'], 'chart-product-sales', 'line', [10, 25, 350, 400, 55, 60, 10, 45]);
-    this.createLineChart(['Product 1', 'Product 2', 'Product 3', 'Product 4', 'Product 5', 'Product 6'], 'chart-products-most-sold', 'pie', [955, 100, 123, 35, 98, 500, 100, 200]);
-    this.createLineChart(['Product 7', 'Product 8', 'Product 9', 'Product 10', 'Product 11', 'Product 12'], 'chart-stock-products', 'bar', this.generateDaysValues());
+
+    const productLabels = [];
+    for (let i in this.products) {
+      productLabels[i] = this.products[i].title;
+    }
+
+    this.createMostSoldProducts(productLabels);
+    this.createInventoryChart(productLabels);
+  }
+
+  private createMostSoldProducts(labels: string[]) {
+    const quantities = [];
+    for (let i in this.products) {
+      quantities[i] = this.products[i].sold;
+    }
+
+    this.createLineChart(labels, 'chart-products-most-sold', 'pie', quantities);
+  }
+
+  private createInventoryChart(labels: string[]) {
+    const quantities = [];
+    for (let i in this.products) {
+      quantities[i] = this.products[i].quantityAvailable;
+    }
+
+    this.createLineChart(labels, 'chart-stock-products', 'bar', quantities);
   }
 
   private generateDaysValues(): number[] {
@@ -32,7 +61,7 @@ export class HomePageComponent implements OnInit {
   }
 
   private createLineChart(labels: string[], element: string, type: string, data: number[]) {
-    const chart = new Chart(element, {
+    new Chart(element, {
       type,
       data: {
         labels,

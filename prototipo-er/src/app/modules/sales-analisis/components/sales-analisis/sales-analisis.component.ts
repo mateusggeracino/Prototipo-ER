@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
+import { Product } from 'src/app/shared/product/product';
+import { getProducts } from '../../../product/data/products.data';
 
 @Component({
   selector: 'app-sales-analisis',
@@ -7,6 +9,9 @@ import { Chart } from 'chart.js';
   styleUrls: ['./sales-analisis.component.scss']
 })
 export class SalesAnalisisComponent implements OnInit {
+
+  products: Product[];
+  productLabels: string[];
 
   chart: Chart;
   titleChart: string;
@@ -17,6 +22,12 @@ export class SalesAnalisisComponent implements OnInit {
   private toDate: Date;
 
   constructor() {
+    this.products = getProducts();
+    this.productLabels = [];
+    for (let i in this.products) {
+      this.productLabels[i] = this.products[i].title;
+    }
+
     this.chartSelected = 'salesChart';
     this.amountDays = 7;
 
@@ -25,15 +36,15 @@ export class SalesAnalisisComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.changeChart();
+    this.changeChart(null);
   }
 
-  changeToChart(chart: string) {
+  changeToChart(chart: string, product: Product) {
     this.chartSelected = chart;
-    this.changeChart();
+    this.changeChart(product);
   }
 
-  changeChart() {
+  changeChart(product: Product) {
     if (this.chart) {
       this.chart.destroy();
     }
@@ -43,7 +54,7 @@ export class SalesAnalisisComponent implements OnInit {
       this.createSalesChart();
     } else if (this.chartSelected === 'productChart') {
       this.showDatePicker = true;
-      this.createProductSalesChart();
+      this.createProductSalesChart(product);
     } else if (this.chartSelected === 'mostSoldProducts') {
       this.showDatePicker = false;
       this.createMostSoldProducts();
@@ -55,12 +66,24 @@ export class SalesAnalisisComponent implements OnInit {
 
   createMostSoldProducts() {
     this.titleChart = 'Produtos mais vendidos';
-    this.createBarChart();
+
+    const quantities = [];
+    for (let i in this.products) {
+      quantities[i] = this.products[i].quantityAvailable;
+    }
+
+    this.createBarChart(quantities);
   }
 
   createLessSoldProducts() {
     this.titleChart = 'Produtos menos vendidos';
-    this.createBarChart();
+
+    const quantities = [];
+    for (let i in this.products) {
+      quantities[i] = this.products[i].sold;
+    }
+
+    this.createBarChart(quantities);
   }
 
   createSalesChart() {
@@ -68,17 +91,16 @@ export class SalesAnalisisComponent implements OnInit {
     this.createLineChart([100, 2, 35, 40, 55, 60, 10, 250]);
   }
 
-  createProductSalesChart() {
+  createProductSalesChart(product: Product) {
     this.titleChart = 'Ganhos com produtos';
-    this.createLineChart([10, 25, 350, 400, 55, 60, 10, 45]);
+    this.createLineChart(product.earnedMoney);
   }
 
-  createBarChart() {
-    const data = this.generateDaysValues();
+  createBarChart(data: number[]) {
     this.chart = new Chart('canvas', {
       type: 'bar',
       data: {
-        labels: ['Product 8', 'Product 9',  'Product 10', 'Product 11',  'Product 12',  'Product 13', 'Product 14'],
+        labels: this.productLabels,
         datasets: [{
           label: '# de vendas do produto',
           data,
@@ -176,7 +198,7 @@ export class SalesAnalisisComponent implements OnInit {
     this.amountDays = this.datediff(value.begin, value.end);
     this.fromDate = value.begin;
     this.toDate = value.end;
-    this.changeChart();
+    this.changeChart(null);
   }
 
   private datediff(first, second) {

@@ -6,8 +6,7 @@
 
         <button mat-raised-button [matMenuTriggerFor]="aboveMenu" style="margin-right:10px;">Ganhos com produtos</button>
         <mat-menu #aboveMenu="matMenu" yPosition="below">
-            <button mat-menu-item (click)="changeToChart('productChart')">Produto 1</button>
-            <button mat-menu-item>Produto 2</button>
+            <button mat-menu-item  *ngFor="let product of products; let i = index" (click)="changeToChart('productChart', product)">{{ product.title }}</button>
         </mat-menu>
 
         <button mat-raised-button (click)="changeToChart('mostSoldProducts')" style="margin-right:10px;">Produtos mais vendidos</button>
