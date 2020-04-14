@@ -19,7 +19,7 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
     this.createLineChart(['07/04', '08/04', '09/04', '10/04', '11/04'], 'chart-sales', 'line', [100, 2, 35, 40, 55, 60, 10, 250]);
-    this.createLineChart(['07/04', '08/04', '09/04', '10/04', '11/04'], 'chart-product-sales', 'line', [10, 25, 350, 400, 55, 60, 10, 45]);
+    this.createLineChart(['07/04', '08/04', '09/04', '10/04', '11/04'], 'chart-product-sales', 'line', this.products[0].earnedMoney);
 
     const productLabels = [];
     for (let i in this.products) {
