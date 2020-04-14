@@ -53,28 +53,13 @@
         <div class="box" gdColumn="col 2 / span 1" gdRow="row">
             <mat-card class="example-card" style="margin-left:10px;">
                 <mat-card-header>
-                    <mat-card-title>Últimas vendas</mat-card-title>
+                    <mat-card-title>Últimos produtos vendidos</mat-card-title>
                 </mat-card-header>
                 <mat-card-content>
                     <mat-list role="list" class="margin-bottom: 14px;">
-                        <mat-list-item role="listitem">
-                            <div mat-line>3 x Product 1</div>
-                            <div mat-line>11/04/2020</div>
-                        </mat-list-item>
-
-                        <mat-list-item role="listitem">
-                            <div mat-line>3 x Product 1</div>
-                            <div mat-line>11/04/2020</div>
-                        </mat-list-item>
-
-                        <mat-list-item role="listitem">
-                            <div mat-line>3 x Product 1</div>
-                            <div mat-line>11/04/2020</div>
-                        </mat-list-item>
-
-                        <mat-list-item role="listitem">
-                            <div mat-line>3 x Product 1</div>
-                            <div mat-line>11/04/2020</div>
+                        <mat-list-item *ngFor="let product of products | slice:0:5; let i = index" role="listitem">
+                            <div mat-line>{{ product.title }}</div>
+                            <div mat-line>{{ product.sold | currency:'BRL':true }}</div>
                         </mat-list-item>
                     </mat-list>
                 </mat-card-content>
