@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Menu, getMenu } from '../data/menu.data';
 import { Router } from '@angular/router';
+import { MatDrawer } from '@angular/material';
 
 @Component({
   selector: 'app-menu',
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
   menus: Menu[] = [];
+  showBlackGround = false;
   constructor(private router: Router) { }
 
   ngOnInit() {
@@ -33,5 +35,19 @@ export class MenuComponent implements OnInit {
     }
 
     menu.ativo = !menu.ativo;
+  }
+
+  openDrawer(drawer: MatDrawer) {
+    drawer.toggle();
+    if (drawer.opened) {
+      this.showBlackGround = true;
+    } else {
+      this.showBlackGround = false;
+    }
+  }
+
+  close(drawer: MatDrawer) {
+    drawer.toggle();
+    this.showBlackGround = false;
   }
 }

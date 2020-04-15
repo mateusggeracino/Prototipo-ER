@@ -1,16 +1,16 @@
 <div>
     <h1>Análise de vendas</h1>
-    
+
     <div>
-        <button mat-raised-button (click)="changeToChart('salesChart')" style="margin-right:10px;">Ganhos em vendas</button>
+        <button mat-raised-button (click)="changeToChart('salesChart', products[0])" style="margin-right:10px;">Ganhos em vendas</button>
 
         <button mat-raised-button [matMenuTriggerFor]="aboveMenu" style="margin-right:10px;">Ganhos com produtos</button>
         <mat-menu #aboveMenu="matMenu" yPosition="below">
             <button mat-menu-item  *ngFor="let product of products; let i = index" (click)="changeToChart('productChart', product)">{{ product.title }}</button>
         </mat-menu>
 
-        <button mat-raised-button (click)="changeToChart('mostSoldProducts')" style="margin-right:10px;">Produtos mais vendidos</button>
-        <button mat-raised-button (click)="changeToChart('lessSoldProducts')">Produtos menos vendidos</button>
+        <button mat-raised-button (click)="changeToChart('mostSoldProducts', products[0])" style="margin-right:10px;">Produtos mais vendidos</button>
+        <button mat-raised-button (click)="changeToChart('lessSoldProducts', products[0])">Produtos menos vendidos</button>
     </div>
 
     <hr/>

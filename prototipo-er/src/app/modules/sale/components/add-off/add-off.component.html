@@ -59,7 +59,7 @@
 
         <div>
           <mat-form-field>
-            <input matInput placeholder="Escolha um período" [satDatepicker]="picker2" (dateChange)="saveDate($event)">
+            <input matInput placeholder="Escolha um período" [satDatepicker]="picker2">
             <sat-datepicker #picker2 [rangeMode]="true">
             </sat-datepicker>
             <sat-datepicker-toggle matSuffix [for]="picker2"></sat-datepicker-toggle>

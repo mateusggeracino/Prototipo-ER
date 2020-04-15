@@ -1,7 +1,7 @@
 <mat-toolbar class="azul-6mkt">
   <mat-toolbar-row>
     <div fxFlex fxLayout="row">
-      <button (click)="drawer.toggle()" mat-icon-button>
+      <button (click)="openDrawer(drawer)" mat-icon-button>
         <mat-icon>dehaze</mat-icon>
       </button>
       <div fxFlex fxLayoutAlign="center center">
@@ -38,7 +38,8 @@
         </div>
       </div>
     </div>
-
   </mat-drawer>
+
+  <mat-drawer-content class="background-content" (click)="close(drawer)" *ngIf="showBlackGround"></mat-drawer-content>
 
 </mat-drawer-container>
