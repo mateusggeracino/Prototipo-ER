@@ -2,16 +2,24 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ViewProductsComponent } from './components/view-products/view-products.component';
 import { ProductRoutingModule } from './product-rounting.module';
-import { MatFormFieldModule, MatIconModule, MatButtonModule, MatInputModule, MatSelectModule, MatCardModule } from '@angular/material';
+import {
+  MatFormFieldModule, MatIconModule, MatButtonModule, MatInputModule,
+  MatSelectModule, MatCardModule, MatDialogModule
+} from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProductCardComponent } from './components/product-card/product-card.component';
+import { VisualizeProductComponent } from './components/visualize-product/visualize-product.component';
 
 
 
 @NgModule({
   declarations: [
     ViewProductsComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    VisualizeProductComponent
+  ],
+  entryComponents: [
+    VisualizeProductComponent
   ],
   imports: [
     CommonModule,
@@ -22,10 +30,12 @@ import { ProductCardComponent } from './components/product-card/product-card.com
     MatInputModule,
     FlexLayoutModule,
     MatSelectModule,
-    MatCardModule
+    MatCardModule,
+    MatDialogModule
   ],
   exports: [
-    ViewProductsComponent
+    ViewProductsComponent,
+    VisualizeProductComponent,
   ]
 })
 export class ProductModule { }

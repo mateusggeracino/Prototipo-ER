@@ -4,7 +4,7 @@ import { SaleComponent } from './components/sale/sale.component';
 import { ProductSaleComponent } from './components/product-sale/product-sale.component';
 import {
   MatCardModule, MatButtonModule, MatInputModule, MatIconModule, MatFormFieldModule,
-  MatSelectModule, MAT_DATE_LOCALE, MatNativeDateModule, MatDatepickerModule, MAT_DATE_FORMATS, DateAdapter
+  MatSelectModule, MAT_DATE_LOCALE, MatNativeDateModule, MatDatepickerModule, MAT_DATE_FORMATS, DateAdapter, MatDialog, MatDialogModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SaleRoutingModule } from './sale-routing.module';
@@ -12,6 +12,7 @@ import { RecomendationComponent } from './components/recomendation/recomendation
 import { AddOffComponent } from './components/add-off/add-off.component';
 import { FormsModule } from '@angular/forms';
 import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker';
+import { VisualizeProductComponent } from '../product/components/visualize-product/visualize-product.component';
 
 export const MY_FORMATS = {
   parse: {
@@ -30,7 +31,11 @@ export const MY_FORMATS = {
     SaleComponent,
     ProductSaleComponent,
     RecomendationComponent,
-    AddOffComponent
+    AddOffComponent,
+    VisualizeProductComponent
+  ],
+  entryComponents: [
+    VisualizeProductComponent
   ],
   imports: [
     CommonModule,
@@ -46,7 +51,8 @@ export const MY_FORMATS = {
     MatDatepickerModule,
     MatNativeDateModule,
     SatDatepickerModule,
-    SatNativeDateModule
+    SatNativeDateModule,
+    MatDialogModule,
   ],
   exports: [
     SaleComponent,
