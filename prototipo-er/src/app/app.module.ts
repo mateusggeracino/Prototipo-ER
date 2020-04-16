@@ -15,6 +15,17 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 import { environment } from 'src/environments/environment';
 
+const firebaseConfig = {
+  apiKey: 'AIzaSyDVGg0GgxI4_1ykXz3ROvUiOc44eXk-kZI',
+  authDomain: 'mkt-49ec1.firebaseapp.com',
+  databaseURL: 'https://mkt-49ec1.firebaseio.com',
+  projectId: 'mkt-49ec1',
+  storageBucket: 'mkt-49ec1.appspot.com',
+  messagingSenderId: '784991356326',
+  appId: '1:784991356326:web:2379a7630514672e03bb67',
+  measurementId: 'G-N331Z36MFX'
+};
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +38,7 @@ import { environment } from 'src/environments/environment';
     ChartsModule,
     MatMenuModule,
     MatButtonModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireModule.initializeApp(firebaseConfig),
     AngularFirestoreModule,
     AngularFireDatabaseModule
   ],
