@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductSales } from 'src/app/shared/product/product';
-import { getProductsSales } from '../../data/products-sales.data';
+import { ProductSales, Product } from 'src/app/shared/product/product';
+import { ProductService } from 'src/app/services/product/product.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-sale',
@@ -8,17 +9,36 @@ import { getProductsSales } from '../../data/products-sales.data';
   styleUrls: ['./sale.component.scss']
 })
 export class SaleComponent implements OnInit {
-  products: ProductSales[];
-  constructor() { }
+  products: Product[];
+  constructor(private productService: ProductService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    this.products = getProductsSales();
+    this.getProducts();
   }
 
-  removeProduct(product: ProductSales) {
-    const index = this.products.findIndex(x => x.id === product.id);
+  getProducts() {
+    this.productService.getAll().subscribe(
+      data => {
+        this.products = data.filter(x => x.off);
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
 
-    this.products.splice(index, 1);
+  removeProduct(product: Product) {
+    product.off = false;
+    product.priceOff = 0;
+
+    this.updateProduct(product);
+  }
+
+  updateProduct(product: Product) {
+    this.productService.update(product)
+      .then(() => { this.snackBar.open('Promoção encerrada com sucesso.', 'OK', { duration: 2000 }); })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 }
 

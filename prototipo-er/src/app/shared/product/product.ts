@@ -8,6 +8,9 @@ export class Product extends Base {
   sold: number;
   earnedMoney: number[];
   imgUrl: string;
+  code?: string;
+  priceOff: number;
+  off: boolean;
 }
 
 export class ProductSales extends Product {

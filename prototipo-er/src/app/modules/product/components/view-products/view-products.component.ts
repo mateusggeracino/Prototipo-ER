@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/product/product';
-import { getProducts } from '../../data/products.data';
+import { ProductService } from 'src/app/services/product/product.service';
 
 @Component({
   selector: 'app-view-products',
@@ -10,13 +10,25 @@ import { getProducts } from '../../data/products.data';
 export class ViewProductsComponent implements OnInit {
   products: Product[];
   states: any[] = [];
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   ngOnInit() {
-    this.products = getProducts();
+    this.getProducts();
+    // this.productService.addAllProducts();
+
     this.states = [
       'Mais Vendidos', 'Menos Vendidos', 'Maior Quantidade', 'Mais Buscado'
     ];
+  }
+
+  getProducts() {
+    this.productService.getAll().subscribe(
+      data => {
+        this.products = data;
+      }, error => {
+        console.log(error);
+      }
+    );
   }
 
 }

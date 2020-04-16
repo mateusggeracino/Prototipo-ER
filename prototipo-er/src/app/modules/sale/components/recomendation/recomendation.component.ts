@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductSales } from 'src/app/shared/product/product';
-import { getProductsSales } from '../../data/products-sales.data';
+import { ProductSales, Product } from 'src/app/shared/product/product';
+import { ProductService } from 'src/app/services/product/product.service';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-recomendation',
@@ -8,17 +9,36 @@ import { getProductsSales } from '../../data/products-sales.data';
   styleUrls: ['./recomendation.component.scss']
 })
 export class RecomendationComponent implements OnInit {
-  products: ProductSales[];
+  products: Product[] = [];
   removeButton = 'Incluir';
-  constructor() { }
+  constructor(private productService: ProductService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    this.products = getProductsSales();
+    this.getProducts();
   }
 
-  removeProduct(product: ProductSales) {
-    const index = this.products.findIndex(x => x.id === product.id);
+  getProducts() {
+    this.products = [];
 
-    this.products.splice(index, 1);
+    this.productService.getAll().subscribe(
+      data => {
+        data.map(x => {
+          if (!x.off) {
+            x.priceOff = x.price - (x.price * .15);
+            this.products.push(x);
+          }
+        });
+      }, error => {
+        console.log(error);
+      }
+    );
+  }
+
+  updateList(product: Product) {
+    product.off = true;
+    this.productService.update(product)
+      .then(() => { this.snackBar.open('Promoção adicionada com sucesso.', 'OK', { duration: 2000 }); });
+
+    this.products = [];
   }
 }

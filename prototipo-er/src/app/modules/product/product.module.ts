@@ -4,13 +4,11 @@ import { ViewProductsComponent } from './components/view-products/view-products.
 import { ProductRoutingModule } from './product-rounting.module';
 import {
   MatFormFieldModule, MatIconModule, MatButtonModule, MatInputModule,
-  MatSelectModule, MatCardModule, MatDialogModule
+  MatSelectModule, MatCardModule, MatDialogModule, MatSnackBarModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { VisualizeProductComponent } from './components/visualize-product/visualize-product.component';
-
-
 
 @NgModule({
   declarations: [
@@ -31,7 +29,8 @@ import { VisualizeProductComponent } from './components/visualize-product/visual
     FlexLayoutModule,
     MatSelectModule,
     MatCardModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   exports: [
     ViewProductsComponent,

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { Product } from 'src/app/shared/product/product';
-import { getProducts } from '../../../product/data/products.data';
+import { getProducts } from '../../../../services/data/products.data';
 
 @Component({
   selector: 'app-sales-analisis',
@@ -114,7 +114,7 @@ export class SalesAnalisisComponent implements OnInit {
             'rgba(50, 50, 50, 0.2)'
           ],
           borderColor: [
-            
+
           ],
           borderWidth: 1
         }]

@@ -4,7 +4,6 @@
       <mat-form-field appearance="outline">
         <mat-label>Produto</mat-label>
         <mat-select>
-          <mat-option>Nenhum</mat-option>
           <mat-option (onSelectionChange)='selectProduct(product)' *ngFor="let product of products" [value]="product">
             {{product.title}}</mat-option>
         </mat-select>
@@ -57,9 +56,9 @@
           </div>
         </div>
 
-        <div>
+        <div [formGroup]="form">
           <mat-form-field>
-            <input matInput placeholder="Escolha um período" [satDatepicker]="picker2">
+            <input matInput placeholder="Escolha um período" [satDatepicker]="picker2" formControlName="date">
             <sat-datepicker #picker2 [rangeMode]="true">
             </sat-datepicker>
             <sat-datepicker-toggle matSuffix [for]="picker2"></sat-datepicker-toggle>
@@ -68,7 +67,7 @@
         <div>
           <mat-form-field appearance="outline">
             <mat-label>Novo preço do seu produto</mat-label>
-            <input matInput>
+            <input type="number" [(ngModel)]="price" required matInput>
           </mat-form-field>
         </div>
       </div>

@@ -4,15 +4,18 @@ import { SaleComponent } from './components/sale/sale.component';
 import { ProductSaleComponent } from './components/product-sale/product-sale.component';
 import {
   MatCardModule, MatButtonModule, MatInputModule, MatIconModule, MatFormFieldModule,
-  MatSelectModule, MAT_DATE_LOCALE, MatNativeDateModule, MatDatepickerModule, MAT_DATE_FORMATS, DateAdapter, MatDialog, MatDialogModule
+  MatSelectModule, MatNativeDateModule, MatDialogModule
 } from '@angular/material';
+
+import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { SaleRoutingModule } from './sale-routing.module';
 import { RecomendationComponent } from './components/recomendation/recomendation.component';
 import { AddOffComponent } from './components/add-off/add-off.component';
-import { FormsModule } from '@angular/forms';
-import { SatDatepickerModule, SatNativeDateModule } from 'saturn-datepicker';
-import { VisualizeProductComponent } from '../product/components/visualize-product/visualize-product.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, SatDatepickerModule } from 'saturn-datepicker';
+import { ProductModule } from '../product/product.module';
+import { MomentDateAdapter } from '@angular/material-moment-adapter';
 
 export const MY_FORMATS = {
   parse: {
@@ -32,10 +35,6 @@ export const MY_FORMATS = {
     ProductSaleComponent,
     RecomendationComponent,
     AddOffComponent,
-    VisualizeProductComponent
-  ],
-  entryComponents: [
-    VisualizeProductComponent
   ],
   imports: [
     CommonModule,
@@ -51,8 +50,9 @@ export const MY_FORMATS = {
     MatDatepickerModule,
     MatNativeDateModule,
     SatDatepickerModule,
-    SatNativeDateModule,
     MatDialogModule,
+    ProductModule,
+    ReactiveFormsModule
   ],
   exports: [
     SaleComponent,
@@ -61,6 +61,8 @@ export const MY_FORMATS = {
   ],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+    { provide: MAT_DATE_FORMATS, useValue: MY_FORMATS },
   ]
 })
 export class SaleModule { }

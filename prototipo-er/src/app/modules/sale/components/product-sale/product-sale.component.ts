@@ -1,7 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ProductSales } from 'src/app/shared/product/product';
+import { ProductSales, Product } from 'src/app/shared/product/product';
 import { MatDialog } from '@angular/material';
 import { VisualizeProductComponent } from 'src/app/modules/product/components/visualize-product/visualize-product.component';
+import { ProductService } from 'src/app/services/product/product.service';
 
 @Component({
   selector: 'app-product-sale',
@@ -9,17 +10,19 @@ import { VisualizeProductComponent } from 'src/app/modules/product/components/vi
   styleUrls: ['./product-sale.component.scss']
 })
 export class ProductSaleComponent implements OnInit {
-  @Input() product: ProductSales;
+  @Input() product: Product;
   @Input() removeButton = 'Encerrar';
   @Output() cancel = new EventEmitter();
 
-  constructor(private dialog: MatDialog) { }
+  constructor(
+    private dialog: MatDialog,
+    private productService: ProductService) { }
 
   ngOnInit() {
   }
 
-  cancelOff() {
-    this.cancel.emit(this.product);
+  cancelOff(product: Product) {
+    this.cancel.emit(product);
   }
 
   viewProduct() {

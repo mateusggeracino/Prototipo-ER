@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from 'src/app/shared/product/product';
-import { getProducts } from 'src/app/modules/product/data/products.data';
+import { getProducts } from 'src/app/services/data/products.data';
 import { MatDialogRef } from '@angular/material';
+import { ProductService } from 'src/app/services/product/product.service';
 
 @Component({
   selector: 'app-my-products',
@@ -10,10 +11,22 @@ import { MatDialogRef } from '@angular/material';
 })
 export class MyProductsComponent implements OnInit {
   products: Product[];
-  constructor(private dialogRef: MatDialogRef<MyProductsComponent>) { }
+  constructor(
+    private dialogRef: MatDialogRef<MyProductsComponent>,
+    private productService: ProductService) { }
 
   ngOnInit() {
-    this.products = getProducts();
+    this.getProducts();
+  }
+
+  getProducts() {
+    this.productService.getAll().subscribe(
+      data => {
+        this.products = data;
+      }, error => {
+        console.log(error);
+      }
+    );
   }
 
   select(product: Product) {

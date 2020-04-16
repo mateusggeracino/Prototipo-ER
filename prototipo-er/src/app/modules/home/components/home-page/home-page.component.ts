@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Chart } from 'chart.js';
 import { Product } from 'src/app/shared/product/product';
-import { getProducts } from '../../../product/data/products.data';
+import { getProducts } from '../../../../services/data/products.data';
 
 @Component({
   selector: 'app-home-page',
@@ -93,7 +93,7 @@ export class HomePageComponent implements OnInit {
           yAxes: [{
             display: false,
             ticks: {
-              callback: function(value, index, values) {
+              callback: function (value, index, values) {
                 return 'R$ ' + value;
               }
             }
